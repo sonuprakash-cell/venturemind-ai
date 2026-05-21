@@ -1,0 +1,95 @@
+Business Model Canvas
+
+The Business Model Canvas is a strategic framework used to describe, design, and analyze how a business creates, delivers, and captures value.
+
+It consists of nine core building blocks.
+
+1. Customer Segments
+Defines the target audience and customer groups the business serves.
+
+Examples:
+- Students
+- Small businesses
+- Enterprises
+- Freelancers
+
+2. Value Proposition
+Explains the unique value the product or service provides to customers.
+
+Examples:
+- Saves time
+- Reduces cost
+- Improves productivity
+- Automates manual tasks
+
+3. Channels
+Describes how the business reaches and communicates with customers.
+
+Examples:
+- Website
+- Social media
+- Mobile apps
+- Email marketing
+- Partnerships
+
+4. Customer Relationships
+Defines how the company interacts with customers.
+
+Examples:
+- Self-service
+- Community support
+- Dedicated support
+- Personalized assistance
+
+5. Revenue Streams
+Explains how the business generates revenue.
+
+Examples:
+- Subscription model
+- One-time payments
+- Freemium upgrades
+- Advertising revenue
+
+6. Key Resources
+The important assets required to operate the business.
+
+Examples:
+- Technology infrastructure
+- Development team
+- Brand
+- Intellectual property
+
+7. Key Activities
+The most important actions the company performs.
+
+Examples:
+- Product development
+- Marketing
+- Customer support
+- Data analysis
+
+8. Key Partnerships
+External companies or organizations that support the business.
+
+Examples:
+- Cloud providers
+- Payment gateways
+- Marketing partners
+- Strategic collaborators
+
+9. Cost Structure
+The major costs involved in operating the business.
+
+Examples:
+- Infrastructure costs
+- Employee salaries
+- Marketing expenses
+- API costs
+
+Benefits of Business Model Canvas:
+- Helps visualize business strategy
+- Improves planning and decision-making
+- Identifies operational gaps
+- Supports startup validation
+
+The Business Model Canvas helps startups organize and communicate business strategies clearly.
