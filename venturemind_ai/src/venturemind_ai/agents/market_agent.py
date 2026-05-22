@@ -1,33 +1,29 @@
 # market_agent.py
 
-"""Market Research Agent"""
-
-from src.venturemind_ai.tools.rag_tool import get_relevant_context
-from src.venturemind_ai.tools.llm_tool import generate_response
+from tools.rag_tool import get_relevant_context
+from tools.llm_tool import generate_response
 
 
-def analyze_market(startup_idea, industry, target_audience):
-    """
-    Analyze market trends, opportunities, and audience potential.
-    """
+def analyze_market(state):
+
+    startup_idea = state.get("startup_idea")
+    industry = state.get("industry")
+    target_audience = state.get("target_audience")
 
     query = f"""
     Startup Idea: {startup_idea}
+
     Industry: {industry}
+
     Target Audience: {target_audience}
     """
 
-    context = get_relevant_context(query)
+    context = state.get("retrieved_context")
 
     prompt = f"""
-    You are a Market Research Analyst.
+    You are a Market Research AI Agent.
 
-    Analyze the following startup idea and provide:
-    1. Industry trends
-    2. Market opportunities
-    3. Target audience insights
-    4. Potential demand
-    5. Growth potential
+    Analyze the following startup idea.
 
     Startup Idea:
     {startup_idea}
@@ -38,8 +34,18 @@ def analyze_market(startup_idea, industry, target_audience):
     Target Audience:
     {target_audience}
 
-    Retrieved Knowledge:
+    Context:
     {context}
+
+    Provide:
+    - Market trends
+    - Market demand
+    - Opportunities
+    - Risks
     """
 
-    return generate_response(prompt)
+    response = generate_response(prompt)
+
+    state.update("market_analysis", response)
+
+    return state

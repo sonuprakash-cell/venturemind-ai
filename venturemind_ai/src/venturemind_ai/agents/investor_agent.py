@@ -1,41 +1,43 @@
 # investor_agent.py
 
-"""Investor Feedback Agent"""
-
-from src.venturemind_ai.tools.rag_tool import get_relevant_context
-from src.venturemind_ai.tools.llm_tool import generate_response
+from tools.rag_tool import get_relevant_context
+from tools.llm_tool import generate_response
 
 
-def evaluate_startup(startup_idea, industry):
-    """
-    Generate investor-style startup feedback.
-    """
+def evaluate_startup(state):
 
-    query = f"""
-    Startup Idea: {startup_idea}
-    Industry: {industry}
-    """
+    startup_idea = state.get("startup_idea")
 
-    context = get_relevant_context(query)
+    market_analysis = state.get("market_analysis")
+
+    competitor_analysis = state.get("competitor_analysis")
+
+    context = state.get("retrieved_context")
 
     prompt = f"""
-    You are an Investor evaluating startup ideas.
-
-    Analyze the startup and provide:
-    1. Investment potential
-    2. Scalability analysis
-    3. Revenue potential
-    4. Business risks
-    5. Improvement suggestions
+    You are an Investor AI Agent.
 
     Startup Idea:
     {startup_idea}
 
-    Industry:
-    {industry}
+    Market Analysis:
+    {market_analysis}
 
-    Retrieved Knowledge:
+    Competitor Analysis:
+    {competitor_analysis}
+
+    Context:
     {context}
+
+    Evaluate:
+    - Investment potential
+    - Scalability
+    - Business risks
+    - Funding readiness
     """
 
-    return generate_response(prompt)
+    response = generate_response(prompt)
+
+    state.update("investor_feedback", response)
+
+    return state

@@ -6,7 +6,7 @@ import pickle
 import faiss
 import numpy as np
 
-from src.venturemind_ai.rag.embeddings import get_embedding
+from rag.embeddings import get_embedding
 
 # Paths
 FAISS_INDEX_PATH = "faiss_index.index"

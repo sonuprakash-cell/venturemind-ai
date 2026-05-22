@@ -1,90 +1,74 @@
 # report_generator.py
 
-"""Generate final startup validation report."""
 
+def generate_final_report(state):
 
-def generate_final_report(
-    startup_idea,
-    industry,
-    target_audience,
-    market_analysis,
-    competitor_analysis,
-    gtm_strategy,
-    investor_feedback=None
-):
-    """
-    Generate structured startup validation report.
-    """
+    startup_idea = state.get("startup_idea")
+
+    industry = state.get("industry")
+
+    target_audience = state.get("target_audience")
+
+    market_analysis = state.get("market_analysis")
+
+    competitor_analysis = state.get("competitor_analysis")
+
+    gtm_strategy = state.get("gtm_strategy")
+
+    investor_feedback = state.get("investor_feedback")
 
     report = f"""
-# VentureMind AI - Startup Validation Report
+# 🚀 VentureMind AI Startup Validation Report
 
-## Startup Idea
+---
+
+## 🧠 Startup Overview
+
+### Startup Idea
 {startup_idea}
 
-## Industry
+### Industry
 {industry}
 
-## Target Audience
+### Target Audience
 {target_audience}
 
 ---
 
-# Market Research Analysis
+# 📊 Market Analysis
+
 {market_analysis}
 
 ---
 
-# Competitor Analysis
+# 🥊 Competitor Analysis
+
 {competitor_analysis}
 
 ---
 
-# Go-To-Market Strategy
+# 🎯 Go-To-Market Strategy
+
 {gtm_strategy}
-"""
-
-    if investor_feedback:
-        report += f"""
 
 ---
 
-# Investor Feedback
+# 💰 Investor Feedback
+
 {investor_feedback}
-"""
-
-    report += """
 
 ---
 
-# SWOT Analysis
+# ✅ Final Recommendation
 
-## Strengths
-- Innovative startup concept
-- Potential market opportunity
-- AI-driven business strategy
+This startup idea demonstrates promising potential based on the analyzed market trends, competitive positioning, and scalability opportunities.
 
-## Weaknesses
-- Early-stage validation challenges
-- Market competition risks
-
-## Opportunities
-- Growing industry demand
-- Expansion and scalability potential
-
-## Threats
-- Competitive market landscape
-- Customer acquisition challenges
-
----
-
-# Final Recommendation
-
-The startup idea demonstrates promising potential.
-Further customer validation, MVP testing,
-and market experimentation are recommended
-before large-scale development.
-
+Recommended next steps:
+- Build MVP quickly
+- Validate with early users
+- Focus on differentiation
+- Improve customer acquisition strategy
+- Gather continuous market feedback
 """
 
     return report

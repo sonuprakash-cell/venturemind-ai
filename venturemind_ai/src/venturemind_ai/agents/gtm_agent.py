@@ -1,41 +1,38 @@
 # gtm_agent.py
 
-"""Go-To-Market Strategy Agent"""
-
-from src.venturemind_ai.tools.rag_tool import get_relevant_context
-from src.venturemind_ai.tools.llm_tool import generate_response
+from tools.rag_tool import get_relevant_context
+from tools.llm_tool import generate_response
 
 
-def generate_gtm_strategy(startup_idea, target_audience):
-    """
-    Generate go-to-market strategy and customer acquisition plan.
-    """
+def generate_gtm_strategy(state):
 
-    query = f"""
-    Startup Idea: {startup_idea}
-    Target Audience: {target_audience}
-    """
+    startup_idea = state.get("startup_idea")
 
-    context = get_relevant_context(query)
+    competitor_analysis = state.get("competitor_analysis")
+
+    context = state.get("retrieved_context")
 
     prompt = f"""
-    You are a Go-To-Market Strategy Consultant.
-
-    Generate:
-    1. Product positioning
-    2. Customer acquisition channels
-    3. Launch strategy
-    4. Pricing suggestions
-    5. Marketing recommendations
+    You are a Go-To-Market Strategy AI Agent.
 
     Startup Idea:
     {startup_idea}
 
-    Target Audience:
-    {target_audience}
+    Competitor Analysis:
+    {competitor_analysis}
 
-    Retrieved Knowledge:
+    Context:
     {context}
+
+    Generate:
+    - Launch strategy
+    - Marketing channels
+    - Customer acquisition strategy
+    - Growth plan
     """
 
-    return generate_response(prompt)
+    response = generate_response(prompt)
+
+    state.update("gtm_strategy", response)
+
+    return state

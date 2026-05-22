@@ -7,8 +7,8 @@ import pickle
 import faiss
 import numpy as np
 
-from src.venturemind_ai.rag.chunking import chunk_text
-from src.venturemind_ai.rag.embeddings import get_embedding
+from rag.chunking import chunk_text
+from rag.embeddings import get_embedding
 
 # Paths
 KNOWLEDGE_PATH = "knowledge"

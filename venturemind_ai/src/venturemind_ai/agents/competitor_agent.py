@@ -1,41 +1,38 @@
 # competitor_agent.py
 
-"""Competitor Analysis Agent"""
-
-from src.venturemind_ai.tools.rag_tool import get_relevant_context
-from src.venturemind_ai.tools.llm_tool import generate_response
+from tools.rag_tool import get_relevant_context
+from tools.llm_tool import generate_response
 
 
-def analyze_competitors(startup_idea, industry):
-    """
-    Analyze competitors, differentiation, and risks.
-    """
+def analyze_competitors(state):
 
-    query = f"""
-    Startup Idea: {startup_idea}
-    Industry: {industry}
-    """
+    startup_idea = state.get("startup_idea")
 
-    context = get_relevant_context(query)
+    market_analysis = state.get("market_analysis")
+
+    context = state.get("retrieved_context")
 
     prompt = f"""
-    You are a Competitor Analysis Expert.
-
-    Analyze the startup idea and provide:
-    1. Possible competitors
-    2. Existing market solutions
-    3. Differentiation opportunities
-    4. Competitive risks
-    5. Market challenges
+    You are a Competitor Analysis AI Agent.
 
     Startup Idea:
     {startup_idea}
 
-    Industry:
-    {industry}
+    Market Analysis:
+    {market_analysis}
 
-    Retrieved Knowledge:
+    Context:
     {context}
+
+    Analyze:
+    - Existing competitors
+    - Competitive advantages
+    - Market gaps
+    - Differentiation strategy
     """
 
-    return generate_response(prompt)
+    response = generate_response(prompt)
+
+    state.update("competitor_analysis", response)
+
+    return state
